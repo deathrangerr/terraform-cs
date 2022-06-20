@@ -79,7 +79,7 @@ resource "aws_instance" "apache-cs" {
                 sudo mount -t xfs -o nouuid /dev/nvme1n1 /webroot
                 sudo apt install apache2 -y
                 sudo sed -i 'd' /var/www/html/index.html
-                sudo echo "Hello Cedit Saison World - running on Apache - on port 80" >> /var/www/html/index.html
+                sudo echo "<html> <body> <h1><center>Hello Cedit Saison World - running on Apache - on port 80 <br> Screen-Shot-1 <br> <img src="https://credit-saison-bucket-amol.s3.amazonaws.com/apache/screen-shot1.png" alt="alt text" /> <br> Screen-Shot-2 <br> <img src="https://credit-saison-bucket-amol.s3.amazonaws.com/apache/screen-shot2.png" alt="alt text" /> <br> Screen-Shot-3 <br> <img src="https://credit-saison-bucket-amol.s3.amazonaws.com/apache/screen-shot3.png" alt="alt text" /> <br> </center></h1> </body> </html>" >> /var/www/html/index.html
                 sudo rsync -av /var/www/html /webroot/
                 sudo sed -i 's/denied/granted/g' /etc/apache2/apache2.conf
                 sudo sed -i 's|/var/www/html|/webroot/html|g' /etc/apache2/sites-enabled/000-default.conf
@@ -134,7 +134,7 @@ resource "aws_instance" "nginx-cs" {
                 sudo mount -t xfs -o nouuid /dev/nvme1n1 /webroot
                 sudo apt install nginx -y
                 sudo sed -i 'd' /usr/share/nginx/html/index.html
-                sudo echo "Hello Cedit Saison World - running on Nginx - on port 80" >> /usr/share/nginx/html/index.html
+                sudo echo "<html> <body> <h1><center>Hello Cedit Saison World - running on Nginx - on port 80 <br> Screen-Shot-1 <br> <img src="https://credit-saison-bucket-amol.s3.amazonaws.com/nginx/screen-shot1.png" alt="alt text" /> <br> Screen-Shot-2 <br> <img src="https://credit-saison-bucket-amol.s3.amazonaws.com/nginx/screen-shot2.png" alt="alt text" /> <br> Screen-Shot-3 <br> <img src="https://credit-saison-bucket-amol.s3.amazonaws.com/nginx/screen-shot3.png" alt="alt text" /> <br> </center></h1> </body> </html>" >> /usr/share/nginx/html/index.html
                 sudo rsync -av /usr/share/nginx/html /webroot/
                 sudo sed -i 's|/var/www/html|/webroot/html|g' /etc/nginx/sites-available/default
                 sudo sed -i 's|/var/www/html|/webroot/html|g' /etc/nginx/sites-enabled/default
